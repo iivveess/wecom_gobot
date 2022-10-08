@@ -10,29 +10,29 @@ import (
 	"net/http"
 )
 
-type wecom_Robot struct {
+type Wecom_Robot struct {
 	url   string
 	key   string
 	ctype string
 }
 
-func New_WeComBot() *wecom_Robot {
-	return &wecom_Robot{
+func New_WeComBot() *Wecom_Robot {
+	return &Wecom_Robot{
 		url:   "https://qyapi.weixin.qq.com/cgi-bin/webhook/send",
 		key:   "",
 		ctype: "application/json",
 	}
 }
 
-func (w *wecom_Robot) SetUrl(u string) {
+func (w *Wecom_Robot) SetUrl(u string) {
 	w.url = u
 }
 
-func (w *wecom_Robot) SetKey(s string) {
+func (w *Wecom_Robot) SetKey(s string) {
 	w.key = s
 }
 
-func (w *wecom_Robot) Send(b *bytes.Buffer) (resp *http.Response, err error) {
+func (w *Wecom_Robot) Send(b *bytes.Buffer) (resp *http.Response, err error) {
 	return http.Post(w.url, w.ctype, b)
 }
 
